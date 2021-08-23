@@ -532,4 +532,167 @@ if(isset($_POST['sliderSil'])){
 
 
 
+//ürün işlemleri
+
+if(isset($_POST['urunKaydet'])){
+	$yonlendir=$_POST['katsid'];
+
+
+	$uploads_dir='../resimler/urunler';
+	@$tmp_name=$_FILES['urunresim'] ["tmp_name"];
+	@$name=$_FILES['urunresim'] ["name"];
+
+	$sayi1=rand(1,1000000);
+	$sayi2=rand(1,1000000);
+	$sayi3=rand(10000,2000000);
+
+	$sayilar=$sayi1.$sayi2.$sayi3;
+	$resimyolu=$sayilar.$name;
+
+	@move_uploaded_file($tmp_name, "$uploads_dir/$resimyolu");
+
+
+	$urunlerKaydet=$baglanti->prepare("INSERT INTO urunler SET
+			
+			kategori_id=:kategori_id,
+			urun_baslik=:urun_baslik,
+			urun_aciklama=:urun_aciklama,
+			urun_sira=:urun_sira,
+			urun_model=:urun_model,
+			urun_renk=:urun_renk,
+			urun_adet=:urun_adet,
+			urun_fiyat=:urun_fiyat,
+			urun_etiket=:urun_etiket,
+			urun_durum=:urun_durum,
+			urun_onecikan=:urun_onecikan,
+			urun_resim=:urun_resim
+		
+
+		");  
+
+		$insert=$urunlerKaydet->execute(array(
+		
+		   'kategori_id'=>$_POST['urunkategori'],
+		   'urun_baslik'=>$_POST['urunbaslik'],
+		   'urun_aciklama'=>$_POST['urunaciklama'],
+		   'urun_sira'=>$_POST['urunsira'],
+		   'urun_model'=>$_POST['urunmodel'],
+		   'urun_renk'=>$_POST['urunrenk'],
+		   'urun_adet'=>$_POST['urunadet'],
+		   'urun_fiyat'=>$_POST['urunfiyat'],
+		   'urun_etiket'=>$_POST['urunanahtar'],
+		   'urun_durum'=>$_POST['urundurum'],
+		   'urun_onecikan'=>$_POST['urunonecikan'],
+		   'urun_resim'=>$resimyolu
+
+
+		
+
+	));
+		
+		
+		if($insert){
+		header("Location:../urunler?katid=$yonlendir&durum=basarili");
+		}else{
+		header("Location:../urunler?katid=$yonlendir&durum=basarisiz");
+		}
+}
+
+
+
+if(isset($_POST['urunDuzenle'])){
+
+	$uploads_dir='../resimler/urunler';
+	@$tmp_name=$_FILES['urunresim'] ["tmp_name"];
+	@$name=$_FILES['urunresim'] ["name"];
+
+	$sayi1=rand(1,1000000);
+	$sayi2=rand(1,1000000);
+	$sayi3=rand(10000,2000000);
+
+	$sayilar=$sayi1.$sayi2.$sayi3;
+	$resimyolu=$sayilar.$name;
+
+	@move_uploaded_file($tmp_name, "$uploads_dir/$resimyolu");
+
+
+	$id=$_POST['urun_id'];
+	$katid=$_POST['katsid'];
+
+	//eğer yeni resim ile güncelleme yaptıysak eskisini silebiliriz
+
+	if($_FILES['urunresim']["size"]>0){
+		$resimsil=$_POST['eskiurunresim'];
+		unlink("../resimler/urunler/$resimsil");
+	}
+
+
+	$duzenle=$baglanti->prepare("UPDATE  urunler SET
+			
+			kategori_id=:kategori_id,
+			urun_baslik=:urun_baslik,
+			urun_aciklama=:urun_aciklama,
+			urun_sira=:urun_sira,
+			urun_model=:urun_model,
+			urun_renk=:urun_renk,
+			urun_adet=:urun_adet,
+			urun_fiyat=:urun_fiyat,
+			urun_etiket=:urun_etiket,
+			urun_durum=:urun_durum,
+			urun_onecikan=:urun_onecikan,
+			urun_resim=:urun_resim
+
+			WHERE urun_id=$id
+		
+
+		");  //yetki 2 ise admin
+
+		$update=$duzenle->execute(array(
+
+		   'kategori_id'=>$_POST['urunkategori'],
+		   'urun_baslik'=>$_POST['urunbaslik'],
+		   'urun_aciklama'=>$_POST['urunaciklama'],
+		   'urun_sira'=>$_POST['urunsira'],
+		   'urun_model'=>$_POST['urunmodel'],
+		   'urun_renk'=>$_POST['urunrenk'],
+		   'urun_adet'=>$_POST['urunadet'],
+		   'urun_fiyat'=>$_POST['urunfiyat'],
+		   'urun_etiket'=>$_POST['urunanahtar'],
+		   'urun_durum'=>$_POST['urundurum'],
+		   'urun_onecikan'=>$_POST['urunonecikan'],
+		   'urun_resim'=>($_FILES['urunresim']["size"]>0) ? $resimyolu : $_POST['eskiurunresim']
+
+
+	));
+
+
+	if($update){
+		header("Location:../urunler?katid=$katid&durum=basarili");
+	}else{
+		header("Location:../urunler?katid=$katid&durum=basarisiz");
+	}
+
+}
+
+
+if(isset($_POST['urunSil'])){
+	$katid=$_POST["kat_id"];
+	$urunSil=$baglanti->prepare("DELETE from urunler WHERE urun_id=:urun_id");
+	$sil=$urunSil->execute(array(
+
+		'urun_id'=>$_POST['id'] 
+	));
+
+	if($sil){
+		$resimsil=$_POST['resim'];
+		unlink("../resimler/urunler/$resimsil");
+		header("Location:../urunler?katid=$katid&silme=basarili");
+	}else{
+		header("Location:../urunler?katid=$katid&silme=basarisiz");
+	}
+}
+
+
+
+
  ?>

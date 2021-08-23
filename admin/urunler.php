@@ -28,7 +28,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Kategoriler</h3>
+                <h3 class="card-title">Ürünler tablosu</h3>
 
 
 
@@ -46,52 +46,67 @@
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
 
-                  <a href="kategori-ekle">
-                    <button class="btn btn-success" style="float: right">Yeni kategori</button></a>
+                  <a href="urunler-ekle?katid=<?php echo $_GET['katid'] ?>">
+                    <button class="btn btn-success" style="float: right">Yeni ürün</button></a>
                   <thead>
                   
                     <tr>
-                      <th>Kategori no</th>
-                      <th>Kategori adı</th>
-                      <th>Kategori sıra</th>
-                      <th>Kategori durum</th>
+                      <th>Resim</th>
+                      <th>Başlık</th>
+                      <th>Model</th>
+                      <th>Renk</th>
+                      <th>Durum</th>
+                      <th>Sıra</th>
+                      <th>Adet</th>
                       <th>Düzenle</th>
                       <th>Sil</th>
-                      <th>Ürünlere git </th>
-                    
                     </tr>
               
                   </thead>
                   <tbody>
                      <?php 
-                      $kategoriler=$baglanti->prepare("SELECT *FROM kategori order by kategori_id ASC");
-                      $kategoriler->execute();
-                      while($kategorilerCek=$kategoriler->fetch(PDO::FETCH_ASSOC)){?>
+                      $urunler=$baglanti->prepare("SELECT *FROM urunler
+                       where kategori_id=:kategori_id order by urun_id ASC");
+                      $urunler->execute(array('kategori_id'=>$_GET['katid']));
+                      while($urunlerCek=$urunler->fetch(PDO::FETCH_ASSOC)){?>
                     <tr>
-                      <td><?php echo $kategorilerCek['kategori_id'] ?></td>
-                      <td><?php echo $kategorilerCek['kategori_adi'] ?></td>
-                      <td><?php echo $kategorilerCek['kategori_sira'] ?></td>
-                                   
-                     
+                      <td>
+                        <img src="resimler/urunler/<?php echo $urunlerCek['urun_resim'] ?>" 
+                        style="height: 50px; "></td>
+
+                      <td><?php echo $urunlerCek['urun_baslik'] ?></td>
+                      <td><?php echo $urunlerCek['urun_model'] ?></td>
+                      <td><?php echo $urunlerCek['urun_renk'] ?></td>
                       <td><span class="tag tag-success">
                         <?php 
-                          if($kategorilerCek['kategori_durum']=="0"){
+                          if($urunlerCek['urun_durum']=="0"){
                             echo "Pasif";
-                          }else if($kategorilerCek['kategori_durum']=="1"){
+                          }else if($urunlerCek['urun_durum']=="1"){
                             echo "Aktif";
                           }
                          ?>
                           
                         </span></td>
+                      <td><?php echo $urunlerCek['urun_sira'] ?></td>
+                       <td><?php echo $urunlerCek['urun_adet'] ?></td>
+                    
+                                   
+                     
+                      
 
-                        <td><a href="kategori-duzenle?id=<?php echo $kategorilerCek["kategori_id"] ?> ">
+                        <td><a href="urunler-duzenle?id=<?php echo $urunlerCek["urun_id"] ?> ">
                         <button  class="btn btn-info">Düzenle</button></td> </a>
 
-                      <td><a href="islem/islem.php?kategoriSil&id=<?php echo $kategorilerCek["kategori_id"] ?>">
-                        <button  class="btn btn-danger">Sil</button></td> </a>
-
-                        <td><a href="urunler?katid=<?php echo $kategorilerCek['kategori_id'] ?>"><button type="submit" class="btn btn-success">Git</button></a></td>
-                      
+                        <form action="islem/islem.php" method="POST">
+                      <td>
+                       
+                        <input type="hidden" name="id" value="<?php echo $urunlerCek['urun_id'] ?>">
+                        <input type="hidden" name="resim" value="<?php echo $urunlerCek['urun_resim'] ?>">
+                        <input type="hidden" name="kat_id" value="<?php echo $urunlerCek['kategori_id'] ?>">
+                         <button name="urunSil" class="btn btn-danger" type="submit">Sil</button></a>
+                      </td>
+                    </form>
+                                    
                   <?php } ?>
                    
                   </tbody>
