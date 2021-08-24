@@ -64,7 +64,7 @@
                   </thead>
                   <tbody>
                      <?php 
-                      $kategoriler=$baglanti->prepare("SELECT *FROM kategori order by kategori_id ASC");
+                      $kategoriler=$baglanti->prepare("SELECT *FROM kategori order by kategori_sira ASC");
                       $kategoriler->execute();
                       while($kategorilerCek=$kategoriler->fetch(PDO::FETCH_ASSOC)){?>
                     <tr>

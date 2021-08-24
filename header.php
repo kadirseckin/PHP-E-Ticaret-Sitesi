@@ -1,5 +1,6 @@
     <?php 
   require_once 'admin/islem/baglanti.php';
+  require_once 'function.php';
   
   $ayar=$baglanti->prepare("SELECT * from  ayarlar where id=?");
   $ayar->execute(array(1)); // idsi 1 olan
@@ -165,20 +166,20 @@
                                                     <li>
                                                         <ul>
                                                              <?php  
-                  $kategori=$baglanti->prepare("SELECT * FROM  kategori  where kategori_sira  between 1 and 10 limit 8 ");
-                  $kategori->execute();
+                  $kategori=$baglanti->prepare("SELECT * FROM kategori where  kategori_durum=:kategori_durum and  kategori_sira  between 1 and 10 limit 8");
+                  $kategori->execute(array('kategori_durum'=>1));
                   while ($kategoricek=$kategori->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                            <li><a href="shop-list-right-sidebar.html"><?php echo  $kategoricek['kategori_adi'] ?></a></li>
+                                                            <li><a href="urunler-<?=seolink($kategoricek['kategori_adi']).'-'.$kategoricek['kategori_id'] ?>"><?php echo  $kategoricek['kategori_adi'] ?></a></li>
                                                         <?php } ?>
                                                         </ul>
                                                     </li>
                                                     <li>
                                                         <ul>
                                                                <?php  
-                  $kategori=$baglanti->prepare("SELECT * FROM  kategori  where kategori_sira  between 10 and 20 limit 8 ");
-                  $kategori->execute();
+                  $kategori=$baglanti->prepare("SELECT * FROM  kategori  where kategori_durum=:kategori_durum and kategori_sira  between 10 and 20 limit 8 ");
+                  $kategori->execute(array('kategori_durum'=>1));
                   while ($kategoricek=$kategori->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                            <li><a href="shop-list-right-sidebar.html"><?php echo  $kategoricek['kategori_adi'] ?></a></li>
+                                                            <li><a href="urunler-<?=seolink($kategoricek['kategori_adi']).'-'.$kategoricek['kategori_id'] ?>"><?php echo  $kategoricek['kategori_adi'] ?></a></li>
                                                         <?php } ?>
 
                                                         </ul>
@@ -186,10 +187,10 @@
                                                     <li>
                                                         <ul>
                                                                <?php  
-                  $kategori=$baglanti->prepare("SELECT * FROM  kategori  where kategori_sira  between 20 and 30 limit 8 ");
-                  $kategori->execute();
+                  $kategori=$baglanti->prepare("SELECT * FROM  kategori  where kategori_durum=:kategori_durum and kategori_sira  between 20 and 30 limit 8 ");
+                   $kategori->execute(array('kategori_durum'=>1));
                   while ($kategoricek=$kategori->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                            <li><a href="shop-list-right-sidebar.html"><?php echo  $kategoricek['kategori_adi'] ?></a></li>
+                                                            <li><a href="urunler-<?=seolink($kategoricek['kategori_adi']).'-'.$kategoricek['kategori_id'] ?>"><?php echo  $kategoricek['kategori_adi'] ?></a></li>
                                                         <?php } ?>
                                                         </ul>
                                                     </li>

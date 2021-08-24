@@ -10,7 +10,25 @@
 	<![endif]-->
         <!-- Begin Body Wrapper -->
         <div class="body-wrapper">
-             <?php require_once 'header.php' ?>
+
+             <?php 
+
+             require_once 'header.php';
+
+              $urunler=$baglanti->prepare("
+                SELECT * FROM urunler
+                where urun_id=:urun_id
+                order by urun_sira ASC"
+              );
+            
+            $urunler->execute(array(
+                 'urun_id'=>$_GET['urun_id']
+            ));
+
+            $urunlerCek=$urunler->fetch(PDO::FETCH_ASSOC);
+
+
+             ?>
             <!-- Header Area End Here -->
          
             <!-- content-wraper start -->
@@ -55,39 +73,31 @@
                         <div class="col-lg-7 col-md-6">
                             <div class="product-details-view-content sp-normal-content pt-60">
                                 <div class="product-info">
-                                    <h2>Today is a good day Framed poster</h2>
-                                    <span class="product-details-ref">Reference: demo_15</span>
-                                    <div class="rating-box pt-20">
-                                        <ul class="rating rating-with-review-item">
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                            <li class="review-item"><a href="#">Read Review</a></li>
-                                            <li class="review-item"><a href="#">Write Review</a></li>
-                                        </ul>
-                                    </div>
+                                    <h2><?php echo $urunlerCek['urun_baslik'] ?></h2>
+                                    
+                                 
                                     <div class="price-box pt-20">
-                                        <span class="new-price new-price-2">$57.98</span>
+                                        <span class="new-price new-price-2">
+                                            <?php echo $urunlerCek['urun_fiyat']." ₺"; ?></span>
                                     </div>
                                     <div class="product-desc">
                                         <p>
-                                            <span>100% cotton double printed dress. Black and white striped top and orange high waisted skater skirt bottom. Lorem ipsum dolor sit amet, consectetur adipisicing elit. quibusdam corporis, earum facilis et nostrum dolorum accusamus similique eveniet quia pariatur.
+                                            <span><?php echo $urunlerCek['urun_aciklama'] ?>
                                             </span>
                                         </p>
                                     </div>
+
                                     <div class="single-add-to-cart">
                                         <form action="#" class="cart-quantity">
                                             <div class="quantity">
-                                                <label>Quantity</label>
+                                                <label>Adet</label>
                                                 <div class="cart-plus-minus">
                                                     <input class="cart-plus-minus-box" value="1" type="text">
                                                     <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
                                                     <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                                 </div>
                                             </div>
-                                            <button class="add-to-cart" type="submit">Add to cart</button>
+                                            <button class="add-to-cart" type="submit">Sepete ekle</button>
                                         </form>
                                     </div>
                                     <div class="product-additional-info">
@@ -103,6 +113,8 @@
                                 </div>
                             </div>
                         </div> 
+
+
                     </div>
                 </div>
             </div>
@@ -114,9 +126,9 @@
                         <div class="col-lg-12">
                             <div class="li-product-tab">
                                 <ul class="nav li-product-menu">
-                                   <li><a class="active" data-toggle="tab" href="#description"><span>Description</span></a></li>
-                                   <li><a data-toggle="tab" href="#product-details"><span>Product Details</span></a></li>
-                                   <li><a data-toggle="tab" href="#reviews"><span>Reviews</span></a></li>
+                                   <li><a class="active" data-toggle="tab" href="#description"><span>Açıklama</span></a></li>
+                                  
+                                   <li><a data-toggle="tab" href="#reviews"><span>Yorumlar</span></a></li>
                                 </ul>               
                             </div>
                             <!-- Begin Li's Tab Menu Content Area -->
@@ -125,7 +137,7 @@
                     <div class="tab-content">
                         <div id="description" class="tab-pane active show" role="tabpanel">
                             <div class="product-description">
-                                <span>The best is yet to come! Give your walls a voice with a framed poster. This aesthethic, optimistic poster will look great in your desk or in an open-space office. Painted wooden frame with passe-partout for more depth.</span>
+                                <span><?php echo $urunlerCek['urun_aciklama'] ?></span>
                             </div>
                         </div>
                         <div id="product-details" class="tab-pane" role="tabpanel">
