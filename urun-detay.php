@@ -38,34 +38,46 @@
                         <div class="col-lg-5 col-md-6">
                            <!-- Product Details Left -->
                             <div class="product-details-left">
+
                                 <div class="product-details-images slider-navigation-1">
-                                    <div class="lg-image">
-                                        <img src="images/product/large-size/1.jpg" alt="product image">
+
+                         <?php 
+                             $cokluresim=$baglanti->prepare("SELECT *FROM cokluresim where urun_id=:urun_id order by id ASC");
+                            $cokluresim->execute(array('urun_id'=>$_GET['urun_id']));
+                            while($cokluresimCek=$cokluresim->fetch(PDO::FETCH_ASSOC)){?>
+                                    <div  class="lg-image">
+                                        <img style="height: 300px;" src="admin/resimler/cokluresim/<?php echo $cokluresimCek['resim'] ?>" alt="product image">
                                     </div>
-                                    <div class="lg-image">
-                                        <img src="images/product/large-size/2.jpg" alt="product image">
+
+                                <?php } ?>
+
+                                <div  class="lg-image">
+                                        <img style="height: 300px;" src="admin/resimler/urunler/<?php echo $urunlerCek['urun_resim'] ?>" alt="product image">
                                     </div>
-                                    <div class="lg-image">
-                                        <img src="images/product/large-size/3.jpg" alt="product image">
-                                    </div>
-                                    <div class="lg-image">
-                                        <img src="images/product/large-size/4.jpg" alt="product image">
-                                    </div>
-                                    <div class="lg-image">
-                                        <img src="images/product/large-size/5.jpg" alt="product image">
-                                    </div>
-                                    <div class="lg-image">
-                                        <img src="images/product/large-size/6.jpg" alt="product image">
-                                    </div>
+
+                               
+
+
                                 </div>
+                                
+
                                 <div class="product-details-thumbs slider-thumbs-1">
-                                    <div class="sm-image"><img src="images/product/small-size/1.jpg" alt="product image thumb"></div>
-                                    <div class="sm-image"><img src="images/product/small-size/2.jpg" alt="product image thumb"></div>
-                                    <div class="sm-image"><img src="images/product/small-size/3.jpg" alt="product image thumb"></div>
-                                    <div class="sm-image"><img src="images/product/small-size/4.jpg" alt="product image thumb"></div>
-                                    <div class="sm-image"><img src="images/product/small-size/5.jpg" alt="product image thumb"></div>
-                                    <div class="sm-image"><img src="images/product/small-size/6.jpg" alt="product image thumb"></div>
+                                    <?php 
+                             $cokluresim=$baglanti->prepare("SELECT *FROM cokluresim where urun_id=:urun_id order by id ASC");
+                            $cokluresim->execute(array('urun_id'=>$_GET['urun_id']));
+                            while($cokluresimCek=$cokluresim->fetch(PDO::FETCH_ASSOC)){?>
+                                    <div class="sm-image"><img style="height:70px;" src="admin/resimler/cokluresim/<?php echo $cokluresimCek['resim'] ?>" alt="product image
+
+                                     thumb"></div>
+
+                                         <?php } ?>
+
+                                         <div class="sm-image"><img style="height:70px;" src="admin/resimler/urunler/<?php echo $urunlerCek['urun_resim'] ?>" alt="product image
+
+                                     thumb"></div>
+                                   
                                 </div>
+                           
                             </div>
                             <!--// Product Details Left -->
                         </div>
@@ -290,7 +302,7 @@
                                                     <div class="product-review">
                                                       
                                                     </div>
-                                                    <h4><a class="product_name" href="urun-detay-<?=seolink($urunlerCek['urun_baslik']).'-'.$urunlerCek['urun_id'] ?>">
+                                                    <h4><a class="product_name" href="urun-detay-<?=seolink($urunlerCek['urun_baslik']).'-'.$urunlerCek['urun_id'] ?>"  >
                                                         <?php  echo 
                                                      $urunlerCek['urun_baslik'] ?></a></h4>
                                                     <div class="price-box">
