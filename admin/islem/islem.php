@@ -692,6 +692,26 @@ if(isset($_POST['urunSil'])){
 	}
 }
 
+if(isset($_POST['cokluResimSil'])){
+	
+	$urunid=$_POST['urun_id']; //yönlendirme için ürün id gerekli
+ 
+	$cokluResimSil=$baglanti->prepare("DELETE from cokluresim WHERE id=:id");
+	$sil=$cokluResimSil->execute(array(
+
+		'id'=>$_POST['id']  // silmek için çoklu resim id gerekli
+	));
+
+	if($sil){
+		$resimsil=$_POST['resim']; //klasörden silmek içinse bu gerekli. 3 değeride post ile buraya çektik.
+		unlink("../resimler/cokluresim/$resimsil");
+		header("Location:../cokluresim?id=$urunid&silme=basarili");
+	}else{
+		header("Location:../cokluresim?id=$urunid&silme=basarisiz");
+	}
+}
+
+
 
 
 

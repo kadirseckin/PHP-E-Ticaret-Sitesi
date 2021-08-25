@@ -60,6 +60,7 @@
                       <th>Adet</th>
                       <th>Düzenle</th>
                       <th>Sil</th>
+                      <th>Çoklu resim</th>
                     </tr>
               
                   </thead>
@@ -106,8 +107,11 @@
                          <button name="urunSil" class="btn btn-danger" type="submit">Sil</button></a>
                       </td>
                     </form>
-                                    
+                           
+                        <td><a href="cokluresim?id=<?php echo $urunlerCek['urun_id'] ?>"><button class="btn btn-warning">Çoklu resim</button></a></td>         
                   <?php } ?>
+
+                
                    
                   </tbody>
                 </table>
