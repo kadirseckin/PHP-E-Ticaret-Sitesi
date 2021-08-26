@@ -1,4 +1,7 @@
-    <?php 
+<?php 
+
+session_start();
+
   require_once 'admin/islem/baglanti.php';
   require_once 'function.php';
   
@@ -9,6 +12,20 @@
   $hakkimizda=$baglanti->prepare("SELECT * from  hakkimizda where hakkimizda_id=?");
   $hakkimizda->execute(array(1)); // idsi 1 olan
   $hakkimizdaCek=$hakkimizda->fetch(PDO::FETCH_ASSOC);
+
+  $kullanicisor=$baglanti->prepare("
+    SELECT *from kullanici 
+    where kullanici_adi=:kullanici_adi
+     " );
+
+  $kullanicisor->execute(array(
+    'kullanici_adi'=>@$_SESSION['normalgiris']
+
+  ));
+
+  $kullaniciCek=$kullanicisor->fetch(PDO::FETCH_ASSOC);
+  
+
  ?>
 
  <head>
@@ -88,9 +105,9 @@
                                     <ul class="hm-menu">
                                         <!-- Begin Header Middle Wishlist Area -->
                                         <li class="hm-wishlist">
-                                            <a href="wishlist.html">
-                                                <span class="cart-item-count wishlist-item-count">0</span>
-                                                <i class="fa fa-heart-o"></i>
+                                            <a href="kullanici">
+                                                
+                                                <i class="fa fa-user-o"></i>
                                             </a>
                                         </li>
                                         <!-- Header Middle Wishlist Area End Here -->

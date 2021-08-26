@@ -712,7 +712,40 @@ if(isset($_POST['cokluResimSil'])){
 }
 
 
+if(isset($_POST['kullaniciDuzenle'])){
 
+	$kullaniciid=$_POST['kullaniciid'];
+
+	$duzenle=$baglanti->prepare("UPDATE kullanici SET 
+		 
+		kullanici_adsoyad =:kullanici_adsoyad,
+		kullanici_mail=:kullanici_mail,
+		kullanici_adres=:kullanici_adres,
+		kullanici_il=:kullanici_il,
+		kullanici_ilce=:kullanici_ilce,
+		kullanici_tel=:kullanici_tel
+
+		WHERE kullanici_id=$kullaniciid
+
+		");
+
+	$kullaniciDuzenle=$duzenle->execute(array(
+
+		'kullanici_adsoyad'=>$_POST['adsoyad'],
+		'kullanici_mail'=>$_POST['email'],
+		'kullanici_adres'=>$_POST['adres'],
+		'kullanici_il'=>$_POST['sehir'],
+		'kullanici_ilce'=>$_POST['ilce'],
+		'kullanici_tel'=>$_POST['telefon']
+	));
+
+	if($kullaniciDuzenle){
+		header("location:../../kullanici?guncelleme=basarili");
+	}else{
+		header("location:../../kullanici?guncelleme=basarisiz");
+	}
+
+}
 
 
  ?>

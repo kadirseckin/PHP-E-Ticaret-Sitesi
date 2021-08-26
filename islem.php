@@ -23,7 +23,7 @@ if (isset($_POST['login'])){
 
 	if($varmi>0){
 		$_SESSION['normalgiris']=$kadi;
-		header("Location:urunler");
+		header("Location:index");
 
 	}else{
 		header("Location:giris?girisdurum=hata");
@@ -97,5 +97,8 @@ if(isset($_POST['register'])){
 		
 	}
 }
+
+
+
 
  ?>

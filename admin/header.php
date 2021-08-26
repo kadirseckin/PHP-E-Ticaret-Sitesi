@@ -7,7 +7,16 @@
     Header("Location:login?durum=izinsizgiris");
   }
   
+   $kullanicisor=$baglanti->prepare("
+    SELECT *from kullanici 
+    where kullanici_adi=:kullanici_adi and 
+    kullanici_yetki=:kullanici_yetki " );
 
+  $kullanicisor->execute(array(
+    'kullanici_adi'=>$_SESSION['girisbelgesi'],
+    'kullanici_yetki'=>2
+
+  ));
 
   $ayar=$baglanti->prepare("SELECT * from  ayarlar where id=?");
   $ayar->execute(array(1)); // idsi 1 olan
@@ -16,6 +25,8 @@
   $hakkimizda=$baglanti->prepare("SELECT * from  hakkimizda where hakkimizda_id=?");
   $hakkimizda->execute(array(1)); // idsi 1 olan
   $hakkimizdaCek=$hakkimizda->fetch(PDO::FETCH_ASSOC);
+
+
  ?>
 
 
