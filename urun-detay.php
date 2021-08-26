@@ -167,8 +167,41 @@
                                     <div class="comment-review">
                                     
                                     <div class="comment-author-infos pt-25">
-                                       <span>Ahmet</span>
-                                         <em>Güzel</em>
+                                        <?php
+                                         $yorumlar=$baglanti->prepare("
+                                            SELECT * FROM yorumlar 
+                                            where urun_id=:urun_id and yorum_onay=:yorum_onay 
+                                            order by yorum_zaman DESC");
+                                         $yorumlar->execute(array(
+                                             'urun_id'=>$_GET['urun_id'],
+                                             'yorum_onay'=>1  
+                                         ));
+
+                                        while($yorumlarCek=$yorumlar->fetch(PDO::FETCH_ASSOC)){  
+                                         ?>
+
+                                         <?php  //yorumu yapanın adını alacağız.
+                                            $kullaniciid=$yorumlarCek['kullanici_id'];
+
+                                            $kullanici=$baglanti->prepare("
+                                            SELECT * FROM kullanici 
+                                            where kullanici_id=:kullanici_id
+                                            ");
+                                         $kullanici->execute(array(
+                                               'kullanici_id'=>$kullaniciid
+                                         ));
+
+                                         $yorumAtanKullanici=$kullanici->fetch(PDO::FETCH_ASSOC);
+
+                                          ?>
+
+                                       <span><?php echo $yorumAtanKullanici['kullanici_adsoyad'] ?></span>
+                                       <span style="font-weight: 100;">
+                                        &nbsp;<?php echo $yorumlarCek['yorum_zaman']; ?></span>
+                                        <em><?php echo $yorumlarCek['yorum_detay'] ?></em>
+                                        <br>
+
+                                     <?php } ?>
                                     </div>
                                   
                                     <div class="review-btn">
@@ -188,18 +221,27 @@
                                                                 <!-- Begin Feedback Area -->
                                                                 <div class="feedback-area">
                                                                     <div class="feedback">
-                                                                        <form action="islem/islem.php" action="post">
+
+                                                                        <form action="admin/islem/islem.php" 
+                                                                        method="post">
+
+                                                                        <input type="hidden" name="urunid" value="<?php echo $urunlerCek['urun_id'] ?>">
+
+                                                                        <input type="hidden" name="kullaniciid" value="<?php echo $kullaniciCek['kullanici_id'] ?>">
+
                                                                             <p class="feedback-form">
                                                                                 <label for="feedback">Yorumunuz</label>
-                                                                                <textarea name="yorum" cols="45" rows="8" ></textarea>
+                                                                                <textarea required name="yorum" cols="45" rows="8" ></textarea>
                                                                             </p>
                                                                             <div class="feedback-input">
                                                                               
                                                                                 <div class="feedback-btn pb-15">
                                                                                     <a href="#" class="close" data-dismiss="modal" aria-label="Close">Kapat</a>
+
                                                                                    <button  class="btn btn-info btn-xs" type="submit" name="yorumKaydet">Gönder</button>
                                                                                 </div>
                                                                             </div>
+
                                                                         </form>
                                                                     </div>
                                                                 </div>

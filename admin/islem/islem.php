@@ -1,4 +1,5 @@
 <?php 
+
 session_start();
 
 require_once 'baglanti.php';
@@ -745,6 +746,78 @@ if(isset($_POST['kullaniciDuzenle'])){
 		header("location:../../kullanici?guncelleme=basarisiz");
 	}
 
+}
+
+if(isset($_POST['yorumKaydet'])){
+
+$urunid=$_POST['urunid'];
+$kullaniciid=$_POST['kullaniciid'];
+$yorum=$_POST['yorum'];
+
+$gelenUrl=$_SERVER['HTTP_REFERER'];
+
+
+$kaydet=$baglanti->prepare("INSERT INTO yorumlar SET 
+	 yorum_detay=:yorum_detay,
+	 kullanici_id=:kullanici_id,
+	 urun_id=:urun_id,
+	 yorum_onay=:yorum_onay
+	");
+
+$yorumKaydet=$kaydet->execute(array(
+	'yorum_detay'=>$yorum,
+	'urun_id'=>$urunid,
+	'kullanici_id'=>$kullaniciid,
+	'yorum_onay'=>0 //0 İSE onaylanmayı bekliyor 1 ise onaylanacak.
+	
+));
+
+if($yorumKaydet){
+		header("location:$gelenUrl");
+}else{
+	header("location:$gelenUrl");
+}
+
+}
+
+
+if(isset($_POST['yorumOnayla'])){
+
+	$yorumid=$_POST['yorumid'];
+
+	$duzenle=$baglanti->prepare("UPDATE yorumlar SET
+			yorum_onay=:yorum_onay
+
+			WHERE yorum_id=$yorumid
+		");
+
+	$yorumOnayla=$duzenle->execute(array(
+		'yorum_onay'=>1  //yorum onaylandı
+
+	));
+
+	if($yorumOnayla){
+		header("Location:../yorumlar?onay=basarili");
+	}else{
+		header("Location:../yorumlar?onay=basarisiz");
+	}
+}
+
+
+if(isset($_GET['yorumSil'])){
+	$yorumid=$_GET['id'];
+
+	$sil=$baglanti->prepare("DELETE from yorumlar WHERE yorum_id=:yorum_id");
+	$yorumSil=$sil->execute(array(
+
+		'yorum_id'=>$yorumid
+	));
+
+	if($yorumSil){
+		header("Location:../yorumlar?silme=basarili");
+	}else{
+		header("Location:../yorumlar?silme=basarisiz");
+	}
 }
 
 
