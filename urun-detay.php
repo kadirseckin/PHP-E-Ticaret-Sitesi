@@ -205,7 +205,10 @@
                                     </div>
                                   
                                     <div class="review-btn">
-                                        <a class="review-links" href="#" data-toggle="modal" data-target="#mymodal">
+                                        <a style="display:<?php 
+                                                if(@$_SESSION['normalgiris']==null){
+                                                    echo 'none';
+                                            } ?>;" class="review-links" href="#" data-toggle="modal" data-target="#mymodal">
                                         Yorum yaz</a>
                                     </div>
                                     <!-- Begin Quick View | Modal Area -->

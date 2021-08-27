@@ -1,3 +1,6 @@
+
+
+
 <!doctype html>
 <html class="no-js" lang="zxx">
     
@@ -12,7 +15,16 @@
         <!-- Begin Body Wrapper -->
         <div class="body-wrapper">
             <!-- Begin Header Area -->
-            <?php require_once 'header.php' ?>
+            <?php 
+            require_once 'header.php';
+
+            if(@$_SESSION['normalgiris']==null){
+                header("Location:index");
+                die();
+
+            }
+
+             ?>
             <!-- Header Area End Here -->
          
             <!-- Begin Login Content Area -->

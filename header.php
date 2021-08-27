@@ -1,6 +1,7 @@
 <?php 
 
-session_start();
+ session_start();
+    ob_start();
 
   require_once 'admin/islem/baglanti.php';
   require_once 'function.php';
@@ -105,10 +106,13 @@ session_start();
                                     <ul class="hm-menu">
                                         <!-- Begin Header Middle Wishlist Area -->
                                         <li class="hm-wishlist">
-                                            <a href="kullanici">
+                                            <a href="kullanici" style="display:<?php if(@$_SESSION['normalgiris']==null){
+                                                echo 'none';
+                                            } ?>;">
                                                 
                                                 <i class="fa fa-user-o"></i>
                                             </a>
+
                                         </li>
                                         <!-- Header Middle Wishlist Area End Here -->
                                         <!-- Begin Header Mini Cart Area -->
@@ -178,7 +182,7 @@ session_start();
                                     <nav>
                                         <ul>
                                          <li><a href="index.php">Anasayfa</a></li>
-                                            <li class="megamenu-holder"><a href="shop-left-sidebar.html">Kategorİler</a>
+                                            <li class="megamenu-holder"><a href="">Kategorİler</a>
                                                 <ul class="megamenu hb-megamenu">
                                                     <li>
                                                         <ul>
@@ -219,6 +223,17 @@ session_start();
                                             <li><a href="about-us.html">Hakkımızda</a></li>
                                             <li><a href="contact.html">Kargo Bilgileri</a></li>
                                             <li><a href="shop-left-sidebar.html">Iletişim</a></li>
+                                            
+                                            <li style="float:right;"><a style="display:<?php 
+                                                if(@$_SESSION['normalgiris']==null){
+                                                    echo 'none';
+                                            } ?>;" href="cikis">Çıkış</a></li>
+
+                                            <li style="float:right;"><a style="display:<?php 
+                                                if(@$_SESSION['normalgiris']!=null){
+                                                    echo 'none';
+                                            } ?>;" href="giris">Giriş/Kayıt</a></li>
+                                            
                                             
                                         </ul>
                                     </nav>
