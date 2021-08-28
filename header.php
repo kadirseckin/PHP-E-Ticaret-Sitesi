@@ -129,10 +129,8 @@
 
                                                        <?php 
                                                           $sepetToplam=0;
-                                                          $kdv=0;
                                                           
-                                                        
-
+                                                                                                    
                                                        foreach (@(array)$_COOKIE['sepet'] as $key => $value) {
 
                                                               $urunler=$baglanti->prepare("
@@ -179,11 +177,9 @@
                                                 <p class="minicart-total">Toplam Fiyat: <span><?php echo $sepetToplam ?>₺</span></p>
                                                 <div class="minicart-button">
                                                     <a href="sepet" class="li-button li-button-fullwidth li-button-dark">
-                                                        <span>Sepeti görüntülüe</span>
+                                                        <span>Sepeti görüntüle</span>
                                                     </a>
-                                                    <a href="alisveris" class="li-button li-button-fullwidth">
-                                                        <span>Alışverişi tamamla</span>
-                                                    </a>
+                                                    
                                                 </div>
                                             </div>
                                         </li>

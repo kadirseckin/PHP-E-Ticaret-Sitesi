@@ -68,6 +68,16 @@
               </p>
             </a>
           </li>
+
+
+          <li class="nav-item">
+            <a href="siparisler" class="nav-link">
+              <i class=" nav-icon fas fa-shopping-cart"></i>
+              <p>
+                Siparişler
+              </p>
+            </a>
+          </li>
             
             <li class="nav-item">
             <a href="yorumlar" class="nav-link">
@@ -77,6 +87,7 @@
               </p>
             </a>
           </li>
+
             
 
 

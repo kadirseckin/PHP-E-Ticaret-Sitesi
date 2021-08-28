@@ -821,4 +821,79 @@ if(isset($_GET['yorumSil'])){
 }
 
 
+if (isset($_GET['siparisonayla'])) {
+
+	$siparisid=$_GET['id'];
+
+	$duzenle=$baglanti->prepare("UPDATE siparisler SET 
+
+
+
+		siparis_onay=:siparis_onay
+	
+
+		WHERE siparis_id=$siparisid
+
+		");
+
+
+	$update=$duzenle->execute(array(
+
+		'siparis_onay'=>1  //0 beklemede- 1 onay - 2 red
+
+
+
+	));
+	if ($update) {
+
+		header("Location:../siparisler.php?yuklenme=basarili");
+	}
+	else{
+		header("Location:../siparisler.php?yuklenme=basarisiz");
+	}
+
+
+
+}
+
+
+
+
+if (isset($_GET['siparisreddet'])) {
+
+	$siparisid=$_GET['id'];
+
+	$duzenle=$baglanti->prepare("UPDATE siparisler SET 
+
+
+
+		siparis_onay=:siparis_onay
+	
+
+		WHERE siparis_id=$siparisid
+
+		");
+
+
+	$update=$duzenle->execute(array(
+
+		'siparis_onay'=>2
+
+
+
+	));
+	if ($update) {
+
+		header("Location:../siparisler.php?yuklenme=basarili");
+	}
+	else{
+		header("Location:../siparisler.php?yuklenme=basarisiz");
+	}
+
+
+
+}
+
+
+
  ?>

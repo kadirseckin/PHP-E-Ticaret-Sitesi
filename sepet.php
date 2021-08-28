@@ -118,7 +118,7 @@
                                                 <li>KDV <span><?php echo $kdv ?>₺</span></li>
                                                 <li>Genel toplam <span><?php echo($sepetToplam+$kdv)  ?>₺</span></li>
                                             </ul>
-                                            <a href="#">Alışverişi tamamla</a>
+                                            <a href="alisveris?toplamfiyat=<?php echo ($sepetToplam+$kdv)  ?>">Alışverişi tamamla</a>
                                         </div>
                                     </div>
                                 </div>
