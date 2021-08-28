@@ -100,16 +100,18 @@
                                     </div>
 
                                     <div class="single-add-to-cart">
-                                        <form action="#" class="cart-quantity">
+                                        <form action="islem" method="post" class="cart-quantity">
                                             <div class="quantity">
                                                 <label>Adet</label>
-                                                <div class="cart-plus-minus">
-                                                    <input class="cart-plus-minus-box" value="1" type="text">
-                                                    <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
-                                                    <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
+                                                <div class="">
+                                                
+                                                    <input name="adet" class="cart-plus-minus-box" value="1" 
+                                                    type="number" min="1">
+                                                    
+                                                    <input type="hidden" name="urun_id" value="<?php echo $urunlerCek['urun_id'] ?>">
                                                 </div>
                                             </div>
-                                            <button class="add-to-cart" type="submit">Sepete ekle</button>
+                                            <button name="sepeteEkle" class="add-to-cart" type="submit">Sepete ekle</button>
                                         </form>
                                     </div>
                                     <div class="product-additional-info">

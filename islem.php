@@ -99,6 +99,28 @@ if(isset($_POST['register'])){
 }
 
 
+if(isset($_POST['sepeteEkle'])){
+	
+	$id=$_POST['urun_id'];
+	$adet=$_POST['adet'];
+
+	setcookie('sepet['.$id.']',$adet,strtotime("7day"));
+	header("Location:sepet");
+}
+
+
+if(isset($_GET['sepetsil'])){
+	$gelenUrl=$_SERVER['HTTP_REFERER'];
+	
+	$id=$_GET['id'];
+
+
+	setcookie('sepet['.$id.']',"",strtotime("-7day"));
+
+	
+	header("Location:$gelenUrl");
+}
+
 
 
  ?>

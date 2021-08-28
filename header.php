@@ -126,38 +126,63 @@
                                             <span></span>
                                             <div class="minicart">
                                                 <ul class="minicart-product-list">
+
+                                                       <?php 
+                                                          $sepetToplam=0;
+                                                          $kdv=0;
+                                                          
+                                                        
+
+                                                       foreach (@(array)$_COOKIE['sepet'] as $key => $value) {
+
+                                                              $urunler=$baglanti->prepare("
+                                                                SELECT * FROM urunler
+                                                                where urun_id=:urun_id
+                                                                "
+                                                              );
+                                                            
+                                                            $urunler->execute(array(
+                                                                 'urun_id'=>$key
+                                                            ));
+
+                                                            $urunlerCek=$urunler->fetch(PDO::FETCH_ASSOC);
+
+                                               
+                                           
+                                             ?> 
                                                     <li>
                                                         <a href="single-product.html" class="minicart-product-image">
-                                                            <img src="images/product/small-size/5.jpg" alt="cart products">
+                                                            <img src="admin/resimler/urunler/<?php 
+                                                        echo $urunlerCek['urun_resim'] ?>" alt="cart products">
                                                         </a>
                                                         <div class="minicart-product-details">
-                                                            <h6><a href="single-product.html">Aenean eu tristique</a></h6>
-                                                            <span>£40 x 1</span>
+                                                            <h6><a href="single-product.html"><?php 
+                                                        echo $urunlerCek['urun_baslik'] ?></a></h6>
+                                                            <span><?php 
+                                                        echo $urunlerCek['urun_fiyat']."₺ (".$value." adet)" ?> </span>
                                                         </div>
-                                                        <button class="close" title="Remove">
+                                                        <a href="islem?sepetsil&id=<?php echo $key ?>">
+                                                        <button class="close" title="Sil">
                                                             <i class="fa fa-close"></i>
                                                         </button>
-                                                    </li>
-                                                    <li>
-                                                        <a href="single-product.html" class="minicart-product-image">
-                                                            <img src="images/product/small-size/6.jpg" alt="cart products">
                                                         </a>
-                                                        <div class="minicart-product-details">
-                                                            <h6><a href="single-product.html">Aenean eu tristique</a></h6>
-                                                            <span>£40 x 1</span>
-                                                        </div>
-                                                        <button class="close" title="Remove">
-                                                            <i class="fa fa-close"></i>
-                                                        </button>
                                                     </li>
+
+                                                <?php 
+                                                    $adet=$value;
+                                                    $urunFiyat=$urunlerCek['urun_fiyat'];
+                                                    $sepetToplam+=($urunFiyat*$adet);
+
+                                            } ?>
+                                                    
                                                 </ul>
-                                                <p class="minicart-total">SUBTOTAL: <span>£80.00</span></p>
+                                                <p class="minicart-total">Toplam Fiyat: <span><?php echo $sepetToplam ?>₺</span></p>
                                                 <div class="minicart-button">
-                                                    <a href="shopping-cart.html" class="li-button li-button-fullwidth li-button-dark">
-                                                        <span>View Full Cart</span>
+                                                    <a href="sepet" class="li-button li-button-fullwidth li-button-dark">
+                                                        <span>Sepeti görüntülüe</span>
                                                     </a>
-                                                    <a href="checkout.html" class="li-button li-button-fullwidth">
-                                                        <span>Checkout</span>
+                                                    <a href="alisveris" class="li-button li-button-fullwidth">
+                                                        <span>Alışverişi tamamla</span>
                                                     </a>
                                                 </div>
                                             </div>
@@ -220,7 +245,7 @@
                                      
                                            
                                             
-                                            <li><a href="about-us.html">Hakkımızda</a></li>
+                                            <li><a href="hakkimizda">Hakkımızda</a></li>
                                             <li><a href="contact.html">Kargo Bilgileri</a></li>
                                             <li><a href="shop-left-sidebar.html">Iletişim</a></li>
                                             
