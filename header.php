@@ -69,10 +69,11 @@
         <link rel="stylesheet" href="css/responsive.css">
         <!-- Modernizr js -->
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
- </head>
+ </head>  
 
     <header>
-               
+      
+                
                 <!-- Begin Header Middle Area -->
                 <div class="header-middle pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0">
                     <div class="container">
@@ -184,6 +185,8 @@
                                             </div>
                                         </li>
                                         <!-- Header Mini Cart Area End Here -->
+
+
                                     </ul>
                                 </div>
                                 <!-- Header Middle Right Area End Here -->
@@ -203,6 +206,7 @@
                                     <nav>
                                         <ul>
                                          <li><a href="index.php">Anasayfa</a></li>
+
                                             <li class="megamenu-holder"><a href="">Kategorİler</a>
                                                 <ul class="megamenu hb-megamenu">
                                                     <li>
@@ -245,10 +249,32 @@
                                             <li><a href="contact.html">Kargo Bilgileri</a></li>
                                             <li><a href="shop-left-sidebar.html">Iletişim</a></li>
                                             
+
                                             <li style="float:right;"><a style="display:<?php 
                                                 if(@$_SESSION['normalgiris']==null){
                                                     echo 'none';
-                                            } ?>;" href="cikis">Çıkış</a></li>
+                                            } ?>;" href="cikis"><b>Çıkış</b></a></li>
+                                    
+                                           
+                                         <li style="float: right; margin-top:14px ;">
+                                           <div class="ht-setting-trigger"><span><b style="display:<?php 
+                                                if(@$_SESSION['normalgiris']==null){
+                                                    echo 'none';
+                                            } ?>;">HESAP İŞLEMLERİ</b></span></div>
+                                                                    <div class="setting ht-setting">
+                                                                        <ul class="ht-setting-list">
+                                                                            <li><a href="kullanici">Hesabım</a></li>
+                                                                            <li><a href="sepet">Sepetim</a></li>
+                                                                            <li><a href="siparisler">Siparişlerim</a></li>
+                                                                            <li><a href="sifremidegistir">Şifremi değiştir</a></li>
+                                                                        </ul>
+                                                    </div>
+                                                                
+                                         </li>
+                                           
+                                             
+                                                                  
+            
 
                                             <li style="float:right;"><a style="display:<?php 
                                                 if(@$_SESSION['normalgiris']!=null){

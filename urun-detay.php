@@ -46,13 +46,13 @@
                             $cokluresim->execute(array('urun_id'=>$_GET['urun_id']));
                             while($cokluresimCek=$cokluresim->fetch(PDO::FETCH_ASSOC)){?>
                                     <div  class="lg-image">
-                                        <img style="height: 300px;" src="admin/resimler/cokluresim/<?php echo $cokluresimCek['resim'] ?>" alt="product image">
+                                        <img style="max-width: 300px;" src="admin/resimler/cokluresim/<?php echo $cokluresimCek['resim'] ?>" alt="product image">
                                     </div>
 
                                 <?php } ?>
 
                                 <div  class="lg-image">
-                                        <img style="height: 300px;" src="admin/resimler/urunler/<?php echo $urunlerCek['urun_resim'] ?>" alt="product image">
+                                        <img style="max-width: 300px;" src="admin/resimler/urunler/<?php echo $urunlerCek['urun_resim'] ?>" alt="product image">
                                     </div>
 
                                

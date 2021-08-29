@@ -96,19 +96,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="coupon-all">
-                                            <div class="coupon">
-                                                <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text">
-                                                <input class="button" name="apply_coupon" value="Apply coupon" type="submit">
-                                            </div>
-                                            <div class="coupon2">
-                                                <input class="button" name="update_cart" value="Update cart" type="submit">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                              
                                 <div class="row">
                                     <div class="col-md-5 ml-auto">
                                         <div class="cart-page-total">
@@ -118,7 +106,14 @@
                                                 <li>KDV <span><?php echo $kdv ?>₺</span></li>
                                                 <li>Genel toplam <span><?php echo($sepetToplam+$kdv)  ?>₺</span></li>
                                             </ul>
-                                            <a href="alisveris?toplamfiyat=<?php echo ($sepetToplam+$kdv)  ?>">Alışverişi tamamla</a>
+                                            <a href="alisveris?toplamfiyat=<?php echo ($sepetToplam+$kdv)?>" style="display:<?php  //giriş yapılmamışsa veya sepet boşsa butonu gizle
+                                                if(@$_SESSION['normalgiris']==null){
+                                                    echo 'none';
+                                            }else if(empty($_COOKIE['sepet'])){
+                                                echo 'none';
+                                            }
+
+                                             ?>">Alışverişi tamamla</a>
                                         </div>
                                     </div>
                                 </div>
