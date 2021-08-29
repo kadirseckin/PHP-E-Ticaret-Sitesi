@@ -69,12 +69,7 @@
                                                 <td class="li-product-price"><span class="amount">
                                                         <?php echo $urunlerCek['urun_fiyat'] ?> ₺</span></td>
                                                 <td class="quantity">
-                                                    <label>Adet</label>
-                                                    <div class="cart-plus-minus">
-                                                        <input class="cart-plus-minus-box" value="<?php echo $value ?>" type="text">
-                                                        <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
-                                                        <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
-                                                    </div>
+                                                    <?php echo $value ?>
                                                 </td>
                                                 <td class="product-subtotal"><span class="amount"><?php
                                                     $adet=$value;

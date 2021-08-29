@@ -32,7 +32,7 @@
  <head>
        <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Shop Four Column || limupa - Digital Products Store eCommerce Bootstrap 4 Template</title>
+        <title>E-Ticaret Projesi</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
@@ -120,8 +120,11 @@
                                         <li class="hm-minicart">
                                             <div class="hm-minicart-trigger">
                                                 <span class="item-icon"></span>
-                                                <span class="item-text">£80.00
-                                                    <span class="cart-item-count">2</span>
+                                                <span class="item-text">Sepetim
+                                                    <span class="cart-item-count"><?php 
+                                                     echo count(@(array)$_COOKIE['sepet']);
+
+                                                     ?></span>
                                                 </span>
                                             </div>
                                             <span></span>
@@ -205,7 +208,7 @@
                                    <div class="hb-menu">
                                     <nav>
                                         <ul>
-                                         <li><a href="index.php">Anasayfa</a></li>
+                                         <li><a href="index"> Anasayfa  </a></li>
 
                                             <li class="megamenu-holder"><a href="">Kategorİler</a>
                                                 <ul class="megamenu hb-megamenu">
@@ -246,8 +249,9 @@
                                            
                                             
                                             <li><a href="hakkimizda">Hakkımızda</a></li>
-                                            <li><a href="contact.html">Kargo Bilgileri</a></li>
-                                            <li><a href="shop-left-sidebar.html">Iletişim</a></li>
+                                             <li><a href="iletisim">Iletişim</a></li>
+                                            <li><a href="bilgi">Sık Sorulan Sorular</a></li>
+                                           
                                             
 
                                             <li style="float:right;"><a style="display:<?php 

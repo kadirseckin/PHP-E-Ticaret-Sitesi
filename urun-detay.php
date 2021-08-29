@@ -2,8 +2,11 @@
 <html class="no-js" lang="zxx">
     
 <!-- single-product-normal31:50-->
-<head></head>
-      
+<head>
+ <title>Ürün detay</title>
+
+</head>
+     
     <body>
     <!--[if lt IE 8]>
 		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -28,11 +31,15 @@
             $urunlerCek=$urunler->fetch(PDO::FETCH_ASSOC);
 
 
-             ?>
+             ?>     
+
+             
             <!-- Header Area End Here -->
          
             <!-- content-wraper start -->
+
             <div class="content-wraper">
+
                 <div class="container">
                     <div class="row single-product-area">
                         <div class="col-lg-5 col-md-6">
