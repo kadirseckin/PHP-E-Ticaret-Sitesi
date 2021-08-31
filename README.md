@@ -14,6 +14,7 @@ gerekiyor. Ayrıca admin paneli tarafından sitedeki veriler ,ürünler ,resimle
 ![anasayfa](https://user-images.githubusercontent.com/51864835/131563387-2aa6af0a-1d71-4ac7-91e5-e0a6d080f6a1.jpg)
 ![hakkımızda](https://user-images.githubusercontent.com/51864835/131563405-0576a5e4-209a-4ada-a50b-1152c6fec0e6.jpg)
 ![sepet](https://user-images.githubusercontent.com/51864835/131563430-9a292a3e-4669-4b9b-9dfd-a1a50d9c39cb.jpg)
+![sipariş](https://user-images.githubusercontent.com/51864835/131565802-a38be81d-e125-4674-b55d-71c2acbd070a.jpg)
 ![detay](https://user-images.githubusercontent.com/51864835/131563295-e6ba9023-9932-4b4a-a684-5d8e51947ae8.jpg)
 
 
