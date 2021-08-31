@@ -73,7 +73,7 @@
                                     <div class="footer-logo">
                                         <img src="images/menu/logo/1.jpg" alt="Footer Logo">
                                         <p class="info">
-                                            En uygun ürünlerin bulunduğu E-Ticaret sitesi
+                                           <?php echo $ayarCek['aciklama'] ?>
                                         </p>
                                     </div>
                                     <ul class="des">
@@ -223,6 +223,7 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+
 
                
      

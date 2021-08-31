@@ -95,59 +95,7 @@
                         </div>
 
 
-                        <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
-                              <div style="text-align:center;">
-                              <?php 
-                         if(@$_GET['durum']=="sifrehata"){
-                            echo "<b style='font-size:20px; color:red;'>Girilen şifreler uyuşmuyor. </b>";
-                            }
-                        if(@$_GET['durum']=="kullaniciZatenVar"){
-                            echo "<b style='font-size:20px; color:red;'>Bu kullanıcı adı kullanılıyor. </b>";
-                        } 
-                         if(@$_GET['durum']=="sifreKarakterHata"){
-                            echo "<b style='font-size:20px; color:red;'>Şifre en az 8 karakter olmalı. </b>";
-                        } 
-                         if(@$_GET['durum']=="basarili"){
-                            echo "<b style='font-size:20px; color:green;'>Kayıt başarılı </b>";
-                        } 
-                         if(@$_GET['durum']=="hata"){
-                            echo "<b style='font-size:20px; color:red;'>Kayıt yapılırken hata oluştu. </b>";
-                        } 
-                        ?>
-                        </div>
-
-                             <form action="islem.php" method ="POST" >
-                                <div class="login-form">
-                                    <h4 class="login-title">Kayıt ol</h4>
-                                    <div class="row">
-
-                                        <div class="col-md-6 col-12 mb-20">
-                                            <label>Kullanıcı Adı</label>
-                                            <input name="kadi" required class="mb-0" type="text" placeholder="Kullanıcı Adı">
-                                        </div>
-                                        <div class="col-md-6 col-12 mb-20">
-                                            <label>Ad Soyad</label>
-                                            <input name="adsoyad" required class="mb-0" type="text" placeholder="Ad Soyad">
-                                        </div>
-                                        <div class="col-md-12 mb-20">
-                                            <label>Email Adresi*</label>
-                                            <input name="email" required class="mb-0" type="email" placeholder="Email Adresi">
-                                        </div>
-                                        <div class="col-md-6 mb-20">
-                                            <label>Şifre</label>
-                                            <input name="sifre" required class="mb-0" type="password" placeholder="Şifre">
-                                        </div>
-                                        <div class="col-md-6 mb-20">
-                                            <label>Şifre tekrar</label>
-                                            <input name="sifretekrar" required class="mb-0" type="password" placeholder="Şifre tekrar">
-                                        </div>
-                                        <div class="col-12">
-                                            <button name="register" type="submit" class="register-button mt-0">Kayıt OL</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+       
                     </div>
                 </div>
             </div>
@@ -156,6 +104,48 @@
             <?php require_once 'footer.php' ?>
             <!-- Footer Area End Here -->
         </div>
+
+         <script src="js/vendor/jquery-1.12.4.min.js"></script>
+        <!-- Popper js -->
+        <script src="js/vendor/popper.min.js"></script>
+        <!-- Bootstrap V4.1.3 Fremwork js -->
+        <script src="js/bootstrap.min.js"></script>
+        <!-- Ajax Mail js -->
+        <script src="js/ajax-mail.js"></script>
+        <!-- Meanmenu js -->
+        <script src="js/jquery.meanmenu.min.js"></script>
+        <!-- Wow.min js -->
+        <script src="js/wow.min.js"></script>
+        <!-- Slick Carousel js -->
+        <script src="js/slick.min.js"></script>
+        <!-- Owl Carousel-2 js -->
+        <script src="js/owl.carousel.min.js"></script>
+        <!-- Magnific popup js -->
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <!-- Isotope js -->
+        <script src="js/isotope.pkgd.min.js"></script>
+        <!-- Imagesloaded js -->
+        <script src="js/imagesloaded.pkgd.min.js"></script>
+        <!-- Mixitup js -->
+        <script src="js/jquery.mixitup.min.js"></script>
+        <!-- Countdown -->
+        <script src="js/jquery.countdown.min.js"></script>
+        <!-- Counterup -->
+        <script src="js/jquery.counterup.min.js"></script>
+        <!-- Waypoints -->
+        <script src="js/waypoints.min.js"></script>
+        <!-- Barrating -->
+        <script src="js/jquery.barrating.min.js"></script>
+        <!-- Jquery-ui -->
+        <script src="js/jquery-ui.min.js"></script>
+        <!-- Venobox -->
+        <script src="js/venobox.min.js"></script>
+        <!-- Nice Select js -->
+        <script src="js/jquery.nice-select.min.js"></script>
+        <!-- ScrollUp js -->
+        <script src="js/scrollUp.min.js"></script>
+        <!-- Main/Activator js -->
+        <script src="js/main.js"></script>
     </body>
 
 <!-- login-register31:27-->

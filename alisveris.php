@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html class="no-js" lang="zxx">
     
@@ -25,7 +27,7 @@
                             } ?>
                             <form action="islem" method="post">
                              
-                             <input type="hidden" name="toplamfiyat" value="<?php echo $_GET['toplamfiyat'] ?>">
+                             <input type="hidden" name="toplamfiyat" value="<?php echo @$_GET['toplamfiyat'] ?>">
                               <input type="hidden" name="kadi" value="<?php echo $kullaniciCek['kullanici_id'] ?>">
 
                               <div class="row">
@@ -33,7 +35,7 @@
                                         <div class="cart-page-total">
                                             <h2 style="color:green">Ödeme sayfası</h2>
                                             <ul>
-                                                <li>Ödenecek tutar <span><?php echo $_GET['toplamfiyat']?>₺</span></li>
+                                                <li>Ödenecek tutar <span><?php echo @$_GET['toplamfiyat']?>₺</span></li>
                                                 
                                             </ul>
                                             
@@ -51,7 +53,7 @@
                                             </select>
                                            <br> <br>
 
-                                           <button class="btn btn-info"  style="float: right;" name="alisverisBitir" type="submit"> Alışverişi tamamla</button>
+                                           <button class="btn btn-info"  name="alisverisBitir" type="submit"  style="float: right; display:<?php  if((@$_GET['toplamfiyat'])==null){echo 'none';} ?>;"> Alışverişi tamamla</button>
                                         </div>
                                     </div>
                                 </div>
@@ -66,8 +68,7 @@
             <!-- Footer Area End Here -->
         </div>
         <!-- Body Wrapper End Here -->
-        <!-- jQuery-V1.12.4 -->
-        <script src="js/vendor/jquery-1.12.4.min.js"></script>
+      <script src="js/vendor/jquery-1.12.4.min.js"></script>
         <!-- Popper js -->
         <script src="js/vendor/popper.min.js"></script>
         <!-- Bootstrap V4.1.3 Fremwork js -->

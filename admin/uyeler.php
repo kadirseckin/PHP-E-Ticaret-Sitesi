@@ -58,8 +58,8 @@
                       <th>Telefon</th>
                       <th>Yetki</th>
                       <th>Katıldığı tarih</th>
-                      <th>Düzenle</th>
-                      <th>Sil</th>
+                     
+                     
                     </tr>
               
                   </thead>
@@ -89,10 +89,9 @@
                         </span></td>
                       <td><?php echo $kullanicilarCek['kullanici_zaman'] ?></td>
 
-                      <td><button type="submit" class="btn btn-info">Düzenle</button></td>
+           
 
-                      <td><a href="islem/islem.php?kullanicisil&id=<?php echo $kullanicilarCek["kullanici_id"] ?>">
-                        <button  class="btn btn-danger">Sil</button></td> </a>
+                      
                     </tr>
                   <?php } ?>
                    

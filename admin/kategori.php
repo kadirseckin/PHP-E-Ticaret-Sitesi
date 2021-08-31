@@ -56,7 +56,7 @@
                       <th>Kategori sıra</th>
                       <th>Kategori durum</th>
                       <th>Düzenle</th>
-                      <th>Sil</th>
+                      <!--<th>Sil</th>-->
                       <th>Ürünlere git </th>
                     
                     </tr>
@@ -87,8 +87,8 @@
                         <td><a href="kategori-duzenle?id=<?php echo $kategorilerCek["kategori_id"] ?> ">
                         <button  class="btn btn-info">Düzenle</button></td> </a>
 
-                      <td><a href="islem/islem.php?kategoriSil&id=<?php echo $kategorilerCek["kategori_id"] ?>">
-                        <button  class="btn btn-danger">Sil</button></td> </a>
+                     <!-- <td><a href="islem/islem.php?kategoriSil&id=<?php echo $kategorilerCek["kategori_id"] ?>">
+                        <button  class="btn btn-danger">Sil</button></td> </a>-->
 
                         <td><a href="urunler?katid=<?php echo $kategorilerCek['kategori_id'] ?>"><button type="submit" class="btn btn-success">Git</button></a></td>
                       

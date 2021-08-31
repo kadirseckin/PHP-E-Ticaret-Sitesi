@@ -91,14 +91,8 @@
                             <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
                                 <!-- Begin Header Middle Searchbox Area -->
                                 <form action="#" class="hm-searchbox">
-                                    <select class="nice-select select-search-category">
-                                         
-                                        <option value="13">Cameras</option>                          
-                                        <option value="14">headphone</option>                                
-                                        <option value="15">Smartwatch</option>                           
-                                        <option value="16">Accessories</option>
-                                    </select>
-                                    <input type="text" placeholder="Enter your search key ...">
+                                   
+                                    <input type="text" placeholder="Aradığınız ürünü giriniz ...">
                                     <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
                                 </form>
                                 <!-- Header Middle Searchbox Area End Here -->

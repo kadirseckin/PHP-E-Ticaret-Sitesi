@@ -22,14 +22,12 @@
                             <div class="shop-top-bar mt-30">
                                 <div class="shop-bar-inner">
                                   
-                                    <div class="toolbar-amount">
-                                        <span>Gösteriliyor 1 to 9</span>
-                                    </div>
+                                    
                                 </div>
                                 <!-- product-select-box start -->
                                 <div class="product-select-box">
                                     <div class="product-short">
-                                        <p>Sort By:</p>
+                                        <p>Şuna göre sırala:</p>
                                         <select class="nice-select">
                                       
                                             <option value="sales">İsme göre (A - Z)</option>
